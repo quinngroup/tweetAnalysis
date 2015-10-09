@@ -1,0 +1,61 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.Map;
+import java.util.TreeMap;
+
+/**
+ * this class is clean up the key and reduce the capital small same word issue 
+ */
+
+public class ConvertToallSmall{
+
+	public static void main (String args[]){
+		String fileName = "/home/manish/fall2015/RA/DrunkTweetAnalysis/spark/temp.txt";
+		Map<String, Integer> map = new TreeMap<String, Integer>();
+		Map<Integer, String> sortedMap = new TreeMap<Integer, String>();
+		try{
+
+			//Create object of FileReader
+			FileReader inputFile = new FileReader(fileName);
+
+			//Instantiate the BufferedReader Class
+			BufferedReader bufferReader = new BufferedReader(inputFile);
+
+			//Variable to hold the one line data
+			String line;
+			String[] arr;
+			int val =0;
+			String key = "";
+			// Read file line by line and print on the console
+			while ((line = bufferReader.readLine()) != null)   {
+				val =0;
+				line=line.trim().toLowerCase();
+				arr = line.split("#@#"); // #$# does not work for some weird reason
+				//System.out.println(arr[1]+arr[0]);
+				val = Integer.parseInt(arr[1].trim());
+				key = arr[0].replaceAll("[^\\p{L}\\p{Nd}]+", ""); // to get rid of every thing
+				if(key.length()>2){
+					if(map.containsKey(key)){
+						val += map.get(key);
+					}
+					map.put(key,val);// for comparison puyrpose
+					//sortedMap.put(val, arr[0].trim());
+					}  // for printing purpose
+
+			}
+			bufferReader.close();
+		}
+		catch(Exception e){
+			System.out.println("Error while reading file line by line:" + e.getMessage());
+		}
+		
+		for (Map.Entry<String, Integer> entry : map.entrySet()) {
+			sortedMap.put(entry.getValue(),entry.getKey());
+		}
+		
+		for (Map.Entry<Integer, String> entry : sortedMap.entrySet()) {
+			System.out.println(entry.getKey()+" : "+entry.getValue());
+		}
+
+	}
+}

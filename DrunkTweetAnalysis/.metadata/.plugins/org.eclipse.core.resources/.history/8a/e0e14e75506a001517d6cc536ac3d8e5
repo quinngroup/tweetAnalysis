@@ -1,0 +1,58 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
+/**
+ * this class is clean up the key and reduce the capital small same word issue
+ */
+
+public class ConvertSmallandMap{
+
+	public static void main (String args[]){
+		String fileName = "/home/manish/fall2015/RA/DrunkTweetAnalysis/spark/SortedFinal1.txt";
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		//Map<Integer, String> sortedMap = new TreeMap<Integer, String>();
+		try{
+
+			//Create object of FileReader
+			FileReader inputFile = new FileReader(fileName);
+
+			//Instantiate the BufferedReader Class
+			BufferedReader bufferReader = new BufferedReader(inputFile);
+
+			//Variable to hold the one line data
+			String line;
+			int val =0;
+			String key = "";
+			int counter = 0 ;
+			String[] arr;
+			// Read file line by line and print on the console
+			while ((line = bufferReader.readLine()) != null)   {
+				val =0;
+				line=line.trim();
+				arr = line.split(":");
+				if(arr[1].matches(".*\\d+.*")){
+					val = Integer.parseInt(arr[1].trim());
+					key = arr[0];
+					if(key.length()>2){
+						if(map.containsKey(key)){
+							val += map.get(key);
+						}
+						map.put(key,val);// for comparison puyrpose
+						//sortedMap.put(val, arr[0].trim());
+					}  // for printing purpose
+				}
+			}
+			bufferReader.close();
+		}
+		catch(Exception e){
+			System.out.println("Error while reading file line by line:" + e.getMessage());
+		}
+
+		for (Map.Entry<String, Integer> entry : map.entrySet()) {
+			System.out.println(entry.getValue()+" : "+entry.getKey());
+		}
+	}
+}
