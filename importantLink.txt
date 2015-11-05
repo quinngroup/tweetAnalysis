@@ -1,0 +1,8 @@
+# file which can have a common list of all the important resources
+
+
+list of Machine learning and stats repo
+
+http://blog.josephmisiti.com/a-huge-list-of-machine-learning-repositories/
+
+****************************************************************
