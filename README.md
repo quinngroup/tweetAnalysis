@@ -60,10 +60,8 @@ Let people know how they can dive into the project, include important links to t
 ## License
 
 ##Papper refrences
-*Co-evolutionary dynamics in social networks:*
-A case study of Twitter: http://www.cc.gatech.edu/~dovrolis/Papers/twcoevo-final.pdf
-*A New Understanding of Friendships in
-Space: Complex Networks Meet Twitter *: http://arxiv.org/pdf/1507.02206.pdf
+1. Co-evolutionary dynamics in social networks:A case study of Twitter: http://www.cc.gatech.edu/~dovrolis/Papers/twcoevo-final.pdf
+2. A New Understanding of Friendships in Space: Complex Networks Meet Twitter: http://arxiv.org/pdf/1507.02206.pdf
 
 ##Twitter Graph
 ##Twitter Sentiment analysis
