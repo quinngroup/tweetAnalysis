@@ -1,10 +1,9 @@
-# tweetAnalysisi
+# tweetAnalysis
 
 
 ## Synopsis
 
-At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
-
+This Project is created to track the twitter user on tracking their mental health. The focus is more on graph analysis of their follower and Followee 
 ## Code Example
 
 Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
@@ -12,10 +11,6 @@ Show what the library does as concisely as possible, developers should be able t
 ## Motivation
 
 A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
-
-## Installation
-
-Provide code examples and explanations of how to get the project.
 
 ## API Reference
 
@@ -26,9 +21,8 @@ Depending on the size of the project, if it is small and simple enough the refer
 Describe and show how to run the tests with code examples.
 
 ## Contributors
-
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
-
+1.ranjanmanish
+2.Shannon Quinn
 ## License
 
 A short snippet describing the license (MIT, Apache, etc.)
@@ -66,8 +60,8 @@ Let people know how they can dive into the project, include important links to t
 ## License
 
 ##Papper refrences
-#Twitter Graph
-#Twitter Sentiment analysis
-#Twitter Health related tracking
+##Twitter Graph
+##Twitter Sentiment analysis
+##Twitter Health related tracking
 
-##Actual DataSet
+#Publically Available  DataSet
