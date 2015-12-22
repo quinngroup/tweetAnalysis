@@ -1,0 +1,260 @@
+By Ixtiyor Ahmedov on Friday, December 28, 2012 at 4:46pm
+Many thanks to Abdulloh Abdulkariym for starting this list!
+
+ 
+
+snap.stanford.edu/data/ - Stanford Large Network Dataset Collection
+opendata.socrata.com/ - U.S. and international data spanning a variety of topics, including U.S. Federal data and data sets in categories like Business, Fun, and Education
+data.gov — links to national and international data sources
+data.nasa.gov - open data in categories such as Aeronautics, Climate, Earth Science, Engineering, Life Science, and Space Science
+www.kdnuggets.com/datasets/index.html
+https://developers.google.com/places/challenge/resources
+http://archive.ics.uci.edu/ml/datasets.html - datasets for machine learning
+http://rdatamining.wordpress.com/2011/09/16/datasets-to-practice-your-data-mining/
+http://www.quora.com/Data/Where-can-I-find-large-datasets-for-modeling-confidence-during-the-financial-crisis-which-is-open-to-the-public
+http://www.inf.ed.ac.uk/teaching/courses/dme/html/datasets0405.html
+LODD: Linking Open Drug Data Project  http://www.w3.org/wiki/HCLSIG/LODD 
+For Social Data (Twitter)
+
+http://trec.nist.gov/data/microblog.htmlhttp://trec.nist.gov/data/tweets/
+
+ 
+
+For Multiple Category
+
+http://databib.org/
+
+http://archive.ics.uci.edu/ml/datasets.html
+
+ 
+
+Have a look at the link given down below, it contains list of many different data set ranging from MBs to TBs and belong to many different category and which are available to use for the research purpose or for any application purpose. 
+
+http://www.quora.com/Data/Where-can-I-find-large-datasets-open-to-the-public
+
+ 
+
+
+Economics and FinanceQuandl Financial and Economics Search Engine: https://www.quandl.com/ 
+
+UMD: http://inforumweb.umd.edu/econdata/econdata.html
+
+World bank: http://data.worldbank.org/indicator
+
+
+CBOE Futures Exchange: http://cfe.cboe.com/Data/
+
+Google Finance: http://finance.yahoo.com/ (R)
+
+Google Trends: http://www.google.com/trends?q=google&ctab=0&geo=all&date=all&sort=0
+
+St Louis Fed: http://research.stlouisfed.org/fred2/ (R)
+
+NASDAQ: https://data.nasdaq.com/
+
+OANDA: http://www.oanda.com/ (R)
+
+Yahoo Finance: http://finance.yahoo.com/ (R)
+
+ 
+
+
+Government
+
+Archived national government statistics: http://www.archive-it.org/
+
+Australia: http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/3301.02009?OpenDocument
+
+Canada: http://www.data.gc.ca/default.asp?lang=En&n=5BCD274E-1
+
+DataMarket: http://datamarket.com/
+
+Fed Stats: http://www.fedstats.gov/cgi-bin/A2Z.cgi
+
+Guardian world governments: http://www.guardian.co.uk/world-government-data
+
+London, U.K. data: http://data.london.gov.uk/catalogue
+
+New Zealand: http://www.stats.govt.nz/tools_and_services/tools/TableBuilder/tables-by...
+
+NYC data: http://nycplatform.socrata.com/
+
+OECD: http://www.oecd.org/document/0,3746,en_2649_201185_46462759_1_1_1_1,00.html
+
+RITA: http://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp
+
+San Francisco Data sets: http://datasf.org/
+
+U.K. Government Data: http://data.gov.uk/data
+
+United Nations: http://data.un.org/
+
+U.S. Federal Government Agencies: http://www.data.gov/metric
+
+US CDC Public Health datasets: http://www.cdc.gov/nchs/data_access/ftp_data.htm
+
+The World Bank: http://wdronline.worldbank.org/
+
+UK 2011 Census Open Atlas Project: http://www.alex-singleton.com/2011-census-open-atlas-project/
+
+India: www.data.gov.in
+
+Singapore: www.data.gov.sg
+
+ 
+
+
+Machine Learning (UCI is a Good Place to Start)
+
+Airlines Data (2009 ASA Challenge): http://stat-computing.org/dataexpo/2009/the-data.html
+
+Airports and their locations: http://www.infochimps.com/datasets/airports-and-their-locations
+
+AppliedPredictiveModeling (R package): http://bit.ly/16wyvkG
+
+Australian Weather: http://www.bom.gov.au/climate/dwo/
+
+Causality Workbench: http://www.causality.inf.ethz.ch/repository.php
+
+Edge data for US domestic flights 1990 to 2009: http://www.infochimps.com/datasets/us-domestic-flights-from-1990-to-2009
+
+GroupLens Research (movie ratings and more): http://www.grouplens.org/node/12
+
+Kaggle competition data: http://www.kaggle.com/
+
+KDNuggets competition site: www.kdnuggets.com/datasets/
+
+The Koblenz Network Collection: http://konect.uni-koblenz.de/
+
+Machine Learning Data Set Repository: http://mldata.org/
+
+Medicare Data File: http://go.cms.gov/19xxPN4
+
+Microsoft Research: http://research.microsoft.com/apps/dp/dl/downloads.aspx
+
+Million songs: http://blog.echonest.com/post/3639160982/million-song-dataset
+
+RDataMining.com R and Data Mining ebook data: http://www.rdatamining.com/data
+
+The Revolution Analytics Collection: http://www.revolutionanalytics.com/subscriptions/datasets/
+
+Social Networking: http://www.cs.cmu.edu/~jelsas/data/ancestry.com/
+
+UCI Machine Learning Repository: http://archive.ics.uci.edu/ml/
+
+53.5 billion clicks: http://cnets.indiana.edu/groups/nan/webtraffic/click-dataset
+
+ 
+
+
+Public Domain Collections
+
+Academic Torrents: http://academictorrents.com/
+
+Data360: http://www.data360.org/index.aspx
+
+Datamob.org: http://datamob.org/datasets
+
+Factual: http://www.factual.com/topics/browse
+
+Freebase: http://www.freebase.com/
+
+Google: http://www.google.com/publicdata/directory
+
+infochimps: http://www.infochimps.com/
+
+numbray: http://numbrary.com/
+
+Sample R data sets: http://stat.ethz.ch/R-manual/R-patched/library/datasets/html/00Index.html (R)
+
+SourceForge Research Data: http://www.nd.edu/~oss/Data/data.html
+
+UFO Reports: http://www.nuforc.org/webreports.html
+
+Wikileaks 911 pager intercepts: http://911.wikileaks.org/files/index.html
+
+Stats4Stem.org: R data sets: http://www.stats4stem.org/data-sets.html (R)
+
+The Washington Post List: http://www.washingtonpost.com/wp-srv/metro/data/datapost.html
+
+ 
+
+
+Science
+
+Agricultural Experiments: http://www.inside-r.org/packages/cran/agridat/docs/agridat (R)
+
+Climate data: http://www.cru.uea.ac.uk/cru/data/temperature/#datter
+
+and ftp://ftp.cmdl.noaa.gov/
+
+Gene Expression Omnibus: http://www.ncbi.nlm.nih.gov/geo/
+
+Geo Spatial Data: http://geodacenter.asu.edu/datalist/
+
+Human Microbiome Project: http://www.hmpdacc.org/reference_genomes/reference_genomes.php
+
+MIT Cancer Genomics Data: http://www.broadinstitute.org/cgi-bin/cancer/datasets.cgi
+
+NASA: http://nssdc.gsfc.nasa.gov/nssdc/obtaining_data.html
+
+NIH Microarray data: ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/series/GSE6532/ (R)
+
+Protein structure: http://www.infobiotic.net/PSPbenchmarks/
+
+Public Gene Data: http://www.pubgene.org/
+
+Stanford Microarray Data: http://smd.stanford.edu//
+
+ 
+
+
+Social Sciences
+
+General Social Survey: http://www3.norc.org/GSS+Website/
+
+ICPSR: http://www.icpsr.umich.edu/icpsrweb/ICPSR/access/index.jsp
+
+UCLA Social Sciences Archive: http://dataarchives.ss.ucla.edu/Home.DataPortals.htm
+
+UPJOHN INST: http://www.upjohn.org/erdc/erdc.html
+
+ 
+
+
+Time Series
+
+Time Series data Library: http://robjhyndman.com/TSDL/
+
+
+ 
+
+Universities
+
+Carnegie Mellon University Enron email: http://www.cs.cmu.edu/~enron/
+
+Carnegie Mellon University StatLab: http://lib.stat.cmu.edu/datasets/
+
+Carnegie Mellon University JASA data archive: http://lib.stat.cmu.edu/jasadata/
+
+Ohio State University Financial data: http://fisher.osu.edu/fin/osudata.htm
+
+UC Berkeley: http://ucdata.berkeley.edu/
+
+UCLA: http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data
+
+UC Riverside Time Series: http://www.cs.ucr.edu/~eamonn/time_series_data/
+
+University of Toronto: http://www.cs.toronto.edu/~delve/data/datasets.html
+
+ 
+
+ImagesImageNet: http://www.image-net.org/ 
+
+ 
+
+Text Mining
+
+A number of datasets can be found at: http://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html#datasets
+
+
