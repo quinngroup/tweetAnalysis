@@ -115,7 +115,7 @@ def getAvg(fileName):
 	counter = 0  #initialize counter
 	user = fileName.split(".")[0]
 	path = os.getcwd()
-	fileAdd = path + "/OUT/" + fileName
+	fileAdd = path + "/OUT_NLTK/" + fileName
 	try:
 		fp = open(fileAdd)
 		for line in fp:
@@ -126,8 +126,8 @@ def getAvg(fileName):
 			cAvg = cAvg + cTemp
 		val = float(avg/counter)
 		cVal = float(cAvg/counter)
-		print user + ",",
-		print str(avg)  + "," + str(val) + "," +str(cAvg) + "," + str(cVal)
+		print user + ",", # , at the end makes sure every thing comes in a single line
+		print str(avg)  + "," + str(val) + "," +str(cAvg) + "," + str(cVal) # everuthing I need (for now) 
 	except:
 		pass
 
@@ -142,7 +142,7 @@ def getCorrectnessScore(fileName):
 
 if __name__  == '__main__':
     path = os.getcwd()
-    path = path +"/OUT"
+    path = path +"/OUT_NLTK"
     lst=os.listdir(path)
     for fileName in lst:
         #getTweetsOnly(fileName)
