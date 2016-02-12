@@ -1,7 +1,7 @@
 import sys
 import os
 # @author ranjanmanish
-
+# For cleaning up empty lines : sed '/^$/d' userListSet.txt > userListF.txt
 def getFinalSet(pathFile):
 	userList = []
 	fileOpen = open(pathFile)
