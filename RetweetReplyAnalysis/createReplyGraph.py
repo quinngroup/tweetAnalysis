@@ -30,6 +30,7 @@ def getRetweetsGraph(filename, fileAdd):
                                 firstChar = word1[0]
 				# the the exact userName i.e from @manishranjan it will give manishranjan
 				word1 = word1[1:]
+				#print word1
                                 if firstChar == '@':
 					# if the userName is in the list of users => to find how the user interacts within his/her network
 					if word1 in usersNF:
@@ -44,7 +45,7 @@ def getRetweetsGraph(filename, fileAdd):
 if __name__  == '__main__':
     path = os.getcwd()
     #path = path +"/TweetOfFiltered"
-    #path = path +"/CSVs_NF"
+    #path = path +"/OUT"
     path = path +"/CSVs_NF"
     lst=os.listdir(path)
     for fileName in lst:
