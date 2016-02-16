@@ -1,0 +1,31 @@
+No of nodes 11k 
+became 600  if not excluding self
+became 78 after excluding self for reply
+*****************************Filtered****************************
+1. Excluding self replies  Filtered Group
+#nodes = 78
+# edges = 148
+
+2. Not excluding self but looking within network 
+#nodes 600
+#edges 4329
+
+3. just looking at all the replies
+#nodes: 116021
+#edges: 626175
+
+*****************************Non-Filtered***************************
+
+1.
+#nodes.1840
+#edges. 10210
+
+2. 
+#nodes: 1887
+#edges: 12534
+
+
+3.
+#nodes : 41702
+#edges: 214250
+
