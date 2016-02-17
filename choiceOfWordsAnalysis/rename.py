@@ -1,7 +1,7 @@
 #author ranjanmanish
 import os
 '''
-script which takes directory as input and move them to 
+script which takes directory as input and move them to another directory with changed extension of file
 '''
 cwd = os.getcwd()
 lst=os.listdir(cwd +"/DownloadForAll")
