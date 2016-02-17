@@ -10,9 +10,9 @@ commonWordList = ["i", "|", "&", "love", "life", "i'm", "follow", "the", "-", "l
   
 # =============================
 # Do not modify above this line
-def extractTweet(inputdata):
-    	count = 0 
-    	for line in inputdata:
+def extractTweet(inputData):
+    	fileContent = open(inputData)
+	for line in fileContent:
         	try:
 			line  = line.split(",")[2]
             		line = make_unicode(line)
@@ -42,7 +42,9 @@ def removeStopWords(line):
         print text
 
 '''
-Take file as input and convert the words to smaller 
+this method will filter most common words so we can look at the tail of the 
+word distribution.  
+ake file as input and convert the words to smaller 
 '''
 def convertWordLowerCase(inputData):
         line = re.sub(',','',line) # because presence of comma was giving the empty lines
@@ -50,24 +52,17 @@ def convertWordLowerCase(inputData):
         text = ' '.join([word for word in line.split() if word not in commonWordList])
         return text
 
-'''
-this method will filter most common words so we can look at the tail of the 
-word distribution.  
-'''
-def getTailOfDistribution(inputdata):
-    for line in inputdata:
-        line = make_unicode(line)
-        text = ' '.join([word for word in line.split() if word not in commonWordList])
-        print (text)
 
 # Do not modify below this line
 # =============================
 if __name__ == '__main__':
 	path = os.getcwd()
-	path = path +"/CSVs_F/"
+	#path = path +"/CSVs_F/"
+	path = path +"/TEMP/"
 	lst = os.listdir(path)
 	for fileName in lst:
-		fileName = path +fileName
+		fileName = path + fileName
+		print fileName
 		extractTweet(fileName)
   	#removeStopWords(inputdata)
   	#convertWordLowerCase(inputdata)
