@@ -20,7 +20,7 @@ def extractTweet(inputData):
 			line = re.sub('((www\.[^\s]+)|(https?://[^\s]+))','',line)
 			#Convert @username to blank
 			line = re.sub('@[^\s]+','',line)
-			#line = line.replace("\"",'')
+			line = line.replace("\"",'')
             		line = convertWordLowerCase(line)
 			Test(line)
         	except KeyError:
