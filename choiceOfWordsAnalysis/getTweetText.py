@@ -11,13 +11,15 @@ commonWordList = ["i", "|", "&", "love", "life", "i'm", "follow", "the", "-", "l
 # =============================
 # Do not modify above this line
 def extractTweet(inputdata):
-	print "Hey There"
     	count = 0 
     	for line in inputdata:
         	try:
-			i = resultDict["user"]["description"]
-            		var = make_unicode(var)
-            		print (var)
+			line  = line.split(",")[2]
+            		line = make_unicode(line)
+			line = re.sub(r'#([^\s]+)', r'\1', line)
+			line = re.sub('((www\.[^\s]+)|(https?://[^\s]+))','',line)
+			line = line.strip('\'"')
+            		removesStopWords(line)
         	except KeyError:
             		pass
         	except ValueError:
@@ -34,11 +36,9 @@ def make_unicode(input):
     else:
         return input
 
-def removeStopWords(innputdata):
-    for line in inputdata:
-        line = make_unicode(line)
+def removeStopWords(line):
         text = ' '.join([word for word in line.split() if word not in cachedStopWords])
-        print (text)
+        print text
 
 '''
 Take file as input and convert the words to smaller 
@@ -68,7 +68,8 @@ if __name__ == '__main__':
 	path = path +"/CSVs_F/"
 	lst = os.listdir(path)
 	for fileName in lst:
-		Test(fileName)
+		fileName = path +fileName
+		extractTweet(fileName)
   	#removeStopWords(inputdata)
   	#convertWordLowerCase(inputdata)
   	#getTailOfDistribution(inputdata)
