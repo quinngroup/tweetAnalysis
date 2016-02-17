@@ -19,7 +19,8 @@ def extractTweet(inputdata):
 			line = re.sub(r'#([^\s]+)', r'\1', line)
 			line = re.sub('((www\.[^\s]+)|(https?://[^\s]+))','',line)
 			line = line.strip('\'"')
-            		removesStopWords(line)
+            		line = convertWordLowerCase(line)
+                        removesStopWords(line)
         	except KeyError:
             		pass
         	except ValueError:
@@ -44,13 +45,11 @@ def removeStopWords(line):
 Take file as input and convert the words to smaller 
 '''
 def convertWordLowerCase(inputData):
-    for line in inputData:
-        line = make_unicode(line)
         line = re.sub(',','',line) # because presence of comma was giving the empty lines
-        words = line.split(",")
-        for wrd in words:
-            wrd = wrd.lower()
-            print (wrd),
+        # get rid of common words defined at the top commonWordList
+        text = ' '.join([word for word in line.split() if word not in commonWordList])
+        return text
+
 '''
 this method will filter most common words so we can look at the tail of the 
 word distribution.  
