@@ -61,7 +61,7 @@ def make_unicode(input):
 # =============================
 if __name__ == '__main__':
 	path = os.getcwd()
-	path = path +"/CSVs_F/"
+	path = path +"/CSVs_NF/"
 	#path = path +"/TEMP/"
 	lst = os.listdir(path)
 	for fileName in lst:
