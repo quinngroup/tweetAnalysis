@@ -1,7 +1,8 @@
 '''
 This script just prints the follower count by taking file name as input
 '''
-import oauth, tweepy, sys, locale, threading, urllib3 
+
+import time, oauth, tweepy, sys, locale, threading, urllib3 
 from time import localtime, strftime, sleep
 
 
@@ -21,11 +22,13 @@ def getFollower(userId):
             #to get rid of new line
 	    print userId + "," + str(user.followers_count) + "," + str(user.friends_count)
         except :
+            time.sleep(30)
+            getFollower(userId)
             pass
 
 if __name__ == '__main__':
 	fileName = sys.argv[1]
 	fileContent = open(fileName)
 	for line in fileContent:
-		getFollower("manishranjan84")
+		getFollower(line)
                 time.sleep(30)
