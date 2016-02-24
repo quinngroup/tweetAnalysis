@@ -14,12 +14,18 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_key, access_secret)
 api=tweepy.API(auth)
 
-def getFollower(user):
-	user = api.get_user(user)
-	print user.followers_count
+def getFollower(userId):
+        try:
+            userId = userId.strip()
+            user = api.get_user(userId)
+            #to get rid of new line
+	    print userId + "," + str(user.followers_count) + "," + str(user.friends_count)
+        except :
+            pass
 
 if __name__ == '__main__':
 	fileName = sys.argv[1]
 	fileContent = open(fileName)
 	for line in fileContent:
-		getFollower(line)
+		getFollower("manishranjan84")
+                time.sleep(30)
