@@ -13,7 +13,7 @@ for user in fileOfUser:
 
 def getRetweetsGraph(filename, fileAdd):
 	user = fileName.split(".")[0]
-	retweetList = ""
+	replyList = ""
 	fileContent = open(fileAdd)
 	try:
 		for line in fileContent:
@@ -33,13 +33,15 @@ def getRetweetsGraph(filename, fileAdd):
 				#print word1
                                 if firstChar == '@':
 					# if the userName is in the list of users => to find how the user interacts within his/her network
-					if word1 in usersNF:
-						retweetList = retweetList + ";" + word1
+					#if word1 in usersNF and word1 != user:
+					if word1 != user:
+					replyList = replyList + ";" + word1
 			except :
 				pass
 	except:
 		pass
-	print user + retweetList
+	if len(retweetList) > 1:
+		print user + retweetList
 
 #main definition here
 if __name__  == '__main__':
