@@ -3,14 +3,6 @@
 import re
 import sys
 import os
-'''
-'''
-fileOfUser = open("userList.txt")
-usersF = []
-for user in fileOfUser:
-	usersF.append(user)
-
-print len(usersF)
 def getRetweetsGraph(filename, fileAdd):
 	user = fileName.split(".")[0]
 	retweetList = ""
@@ -38,7 +30,7 @@ def getRetweetsGraph(filename, fileAdd):
 if __name__  == '__main__':
     path = os.getcwd()
     #path = path +"/TweetOfFiltered"
-    path = path +"/OUT"
+    path = path +"/CSVs_NF"
     lst=os.listdir(path)
     for fileName in lst:
 	    fileAdd = path + "/" +fileName
