@@ -15,3 +15,7 @@ Definitely dont consider any thing except english
 ****Its almost safe is to just compute the negative average across the data and marked user who have score 3/4(max(Avg_Score)
 
 
+F : -0.39 across 200 records
+NF : -0.24 Across 300 records
+
+***I am saving plots of how the top user in the group , maximum of them are tweeting negative content above average. The plot could be found at FriendAnalysis folder
