@@ -28,13 +28,13 @@ finest production revolver ever made.""")'''
 def getTFIDF(bloblist, fileList):
     for blob, user in zip(bloblist, fileList):
         path = os.getcwd()
-        fileForOP = path+"/TFIDF_NF/"+user+".csv"
-        sys.stdout = open(fileForOP,'w')
-        #print("Top words in document {}".format(i + 1))
+        #fileForOP = path+"/TFIDF_F/"+user+".csv"
+        #sys.stdout = open(fileForOP,'w')
+        print("USER::{}".format(user))
         scores = {word: tfidf(word, blob, bloblist) for word in blob.words}
         sorted_words = sorted(scores.items(), key=lambda x: x[1], reverse=True)
         for word, score in sorted_words[:50]:
-            print("Word: {}, TF-IDF: {}".format(word, round(score, 5)))
+            print("Word: {}".format(word))
 
 
 # main here
@@ -42,7 +42,7 @@ if __name__ == '__main__':
     documentList = []
     fileList = []
     path = os.getcwd()
-    #path = path + "/OUT_NF/"
+    #path = path + "/OUT_F/"
     path = path + "/TEMP_POS/"
     lst = os.listdir(path)
     for fileName in lst:

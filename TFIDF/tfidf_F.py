@@ -30,11 +30,11 @@ def getTFIDF(bloblist, fileList):
         path = os.getcwd()
         #fileForOP = path+"/TFIDF_F/"+user+".csv"
         #sys.stdout = open(fileForOP,'w')
-        print("Top words in document {}".format(user))
+        print("USER::{}".format(user))
         scores = {word: tfidf(word, blob, bloblist) for word in blob.words}
         sorted_words = sorted(scores.items(), key=lambda x: x[1], reverse=True)
         for word, score in sorted_words[:50]:
-            print("Word: {}, TF-IDF: {}".format(word, round(score, 5)))
+            print("Word: {}".format(word))
 
 
 # main here
@@ -42,8 +42,8 @@ if __name__ == '__main__':
     documentList = []
     fileList = []
     path = os.getcwd()
-    path = path + "/OUT_F/"
-    #path = path + "/TEMP_B/"
+    #path = path + "/OUT_F/"
+    path = path + "/TEMP_NEG/"
     lst = os.listdir(path)
     for fileName in lst:
         temp = ""
