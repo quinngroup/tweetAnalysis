@@ -24,13 +24,19 @@ doc_e = "Health professionals say that brocolli is good for your health."
 
 doc_f = "I was playing sport and it was sexy sports"
 
-doc_g = "health professionals always suggest my mother  to play sportss and eat brocoli for his increased tension as well as sporty"
+doc_g = "health professionals always suggest my mother  to play sportss and eat brocoli for his increased tension as well as sport"
 
 doc_h = "health sports mother brocolli "
-# compile sample documents into a list
+
+doc_i = "politician statements are doing rumble in the jungle"
+
+doc_j = "machine learning bigdata logistic regression svm regression"
+
+#compile sample documents into a list
+
 doc_set = [doc_a, doc_b, doc_c, doc_d, doc_e]
 
-doc_test = [doc_f, doc_g, doc_h]
+doc_test = [doc_f, doc_g, doc_h, doc_i, doc_j]
 
 # list for tokenized documents in loop
 texts = []
@@ -71,9 +77,9 @@ print dictionary
 corpus = [dictionary.doc2bow(text) for text in texts]
 
 # generate LDA model
-ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics=10, id2word = dictionary, passes=20)
+ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics=5, id2word = dictionary, passes=20)
 
-print(ldamodel.print_topics(num_topics=2, num_words=10))
+print(ldamodel.print_topics(num_topics=5, num_words=10))
 
 texts = []
 
