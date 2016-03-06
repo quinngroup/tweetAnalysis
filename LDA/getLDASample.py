@@ -31,13 +31,14 @@ doc_h = "health sports mother brocolli "
 doc_i = "politician statements are doing rumble in the jungle"
 
 doc_j = "machine learning bigdata logistic regression svm regression"
+doc_k = "machine learning bigdata youtube regression abc def logistic sample statistics svm regression"
 
 #compile sample documents into a list
 
 doc_set = [doc_a, doc_b, doc_c, doc_d, doc_e]
 
 #doc_test = [doc_f, doc_g, doc_h, doc_i, doc_j]
-doc_test = [doc_i, doc_j]
+doc_test = [doc_i, doc_j, doc_k]
 
 # list for tokenized documents in loop
 texts = []
