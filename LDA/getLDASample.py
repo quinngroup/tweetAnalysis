@@ -36,7 +36,8 @@ doc_j = "machine learning bigdata logistic regression svm regression"
 
 doc_set = [doc_a, doc_b, doc_c, doc_d, doc_e]
 
-doc_test = [doc_f, doc_g, doc_h, doc_i, doc_j]
+#doc_test = [doc_f, doc_g, doc_h, doc_i, doc_j]
+doc_test = [doc_i, doc_j]
 
 # list for tokenized documents in loop
 texts = []
@@ -112,8 +113,13 @@ dictionary = corpora.Dictionary(texts)
 
 #doc_bow = [(0, 1), (1, 1)]
 
-corpus = [dictionary.doc2bow(text) for text in texts]
-
+corpus_test = [dictionary.doc2bow(text) for text in texts]
+# To get the scores for each document, you can run the document. as a bag of words, through a trained LDA mode
+for item in corpus_test:
+    print ldamodel[item]
+print ("*********************Comparing now***********************")
+# Here I am going to run it on the same documents against which model was trained and see how well  they show the expected behavior
 for item in corpus:
     print ldamodel[item]
+
 
