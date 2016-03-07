@@ -3,6 +3,9 @@ from nltk.corpus import stopwords
 from stop_words import get_stop_words
 from nltk.stem.porter import PorterStemmer
 from gensim import corpora, models
+from collections import defaultdict
+from pprint import pprint
+
 import gensim
 import os
 import re
@@ -12,11 +15,10 @@ tokenizer = RegexpTokenizer(r'\w+')
 
 # create English stop words list
 en_stop = get_stop_words('en')
-
 cachedStopWords = stopwords.words("english")
 
 #increasing the stop word list as the twitter data set is noisy
-en_stop.extend(["demibestfans2016", "u", "rt", "t", "s", "updat", "channel", "de", "que", "la", "en", "eurekamag", "na", "sa", "ang", "keo", "ka", "lang", "le", "je", "est", "c", "pa", "j", "ik", "un", "et", "il", "wt", "fpjb", "fnfjb", "rbjb", "amp", "ini", "ada", "amant", "pushawardskathniel", "kathniel", "00", "05", "04", "15", "16", "14", "18", "aku", "niond", "da", "ich", "ero", "rtandfollow", "da", "ich", "und", "ist", "ero", "m", "da", "com", "em", "um", "meu", "na", "pra", "weather", "properti", "googl", "0mm", "co", "thttps", "https", "http", "n", "t", "u", "for", "us", "is:", "it.", "on", "i'll", "also", "of", "via", "follow", "mali", "rt", "got", "nowplay", "periscop", "stat", "replay", "katch", "biztip", "via", "radio", "commerci", "na", "sa", "ang", "ko", "ng", "mo", "aka", "ka", "ve", "ke", "kixmi", "capricorn", "tarnat", "today", "sagittariu", "tauru", "votingdevonne23", "ff", "0", "new", "go", "mm", "aku", "yang", "yg", "ni", "tak", "ada", "nak", "ya", "dutchschultz", "strictlybid", "lovat", "iheartaward", "bestfanarmi", "que", "la", "el", "en", "y", "lo", "es", "ain", "wit", "votingdevonne23", "giveyourheartdd", "amant", "ootd", "bandana", "updat", "get", "channel", "pushawardskathniel", "kathniel", "cbb", "uri", "santiago", "ain'", 'ain'])
+en_stop.extend(["demibestfans2016", "u", "rt", "t", "s", "updat", "channel", "de", "que", "la", "en", "eurekamag", "na", "sa", "ang", "keo", "ka", "lang", "le", "je", "est", "c", "pa", "j", "ik", "un", "et", "il", "wt", "fpjb", "fnfjb", "rbjb", "amp", "ini", "ada", "amant", "pushawardskathniel", "kathniel", "00", "05", "04", "15", "16", "14", "18", "aku", "niond", "da", "ich", "ero", "rtandfollow", "da", "ich", "und", "ist", "ero", "m", "da", "com", "em", "um", "meu", "na", "pra", "weather", "properti", "googl", "0mm", "co", "thttps", "https", "http", "n", "t", "u", "for", "us", "is:", "it.", "on", "i'll", "also", "of", "via", "follow", "mali", "rt", "got", "nowplay", "periscop", "stat", "replay", "katch", "biztip", "via", "radio", "commerci", "na", "sa", "ang", "ko", "ng", "mo", "aka", "ka", "ve", "ke", "kixmi", "capricorn", "tarnat", "today", "sagittariu", "tauru", "votingdevonne23", "ff", "0", "new", "go", "mm", "aku", "yang", "yg", "ni", "tak", "ada", "nak", "ya", "dutchschultz", "strictlybid", "lovat", "iheartaward", "bestfanarmi", "que", "la", "el", "en", "y", "lo", "es", "ain", "wit", "votingdevonne23", "giveyourheartdd", "amant", "ootd", "bandana", "updat", "get", "channel", "pushawardskathniel", "kathniel", "cbb", "uri", "santiago", "ain'", 'ain', "por", "para", "una", "der", "ein", "aja", "kamu", "sama", "untuk", "lagi", "ako", "kau", "dah", "dia", "kalu", "lah", "bilai", "apa", "lagi"])
 
 # Create p_stemmer of class PorterStemmer
 p_stemmer = PorterStemmer()
@@ -27,8 +29,8 @@ doc_set=[]
 # get the current path
 path = os.getcwd()
 # bring the path to speed
-path = path + "/ALLIN"
 #path = path + "/TEMP"
+path = path + "/ALLIN"
 
 #get the list of files
 lst = os.listdir(path)
@@ -59,6 +61,7 @@ texts = []
 # loop through document list
 for i in doc_set:
     filtered_tokens = []
+    frequency = defaultdict(int)
     # clean and tokenize document string
     raw = i.lower()
     tokens = tokenizer.tokenize(raw)
@@ -71,15 +74,25 @@ for i in doc_set:
     stemmed_tokens = [p_stemmer.stem(i) for i in stopped_tokens]
 
     for element in stemmed_tokens:
-        if len(element) > 3:
+        if len(element) > 2:
             filtered_tokens.append(element)
     
     # add tokens to list
     texts.append(filtered_tokens)
 
+
+for text in texts:
+    for token in text:
+        frequency[token] += 1
+
+texts = [[token for token in text if frequency[token] > 1] for text in texts]
+
+
 # turn our tokenized documents into a id <-> term dictionary
 dictionary = corpora.Dictionary(texts)
-    
+
+pprint (dictionary)
+
 # convert tokenized documents into a document-term matrix
 corpus = [dictionary.doc2bow(text) for text in texts]
 
@@ -87,3 +100,7 @@ corpus = [dictionary.doc2bow(text) for text in texts]
 ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics=10, id2word = dictionary, passes=30)
 
 print(ldamodel.print_topics(num_topics=10))
+
+for item  in corpus:
+    print ldamodel[item]
+
