@@ -28,17 +28,21 @@ doc_g = "health professionals always suggest my mother  to play sportss and eat 
 
 doc_h = "health sports mother brocolli "
 
-doc_i = "politician statements are doing rumble in the jungle"
-
-doc_j = "machine learning bigdata logistic regression svm regression"
-doc_k = "machine learning bigdata youtube regression abc def logistic sample statistics svm regression"
+#doc_i = "abc def ghi jkl mno pqr"
+# to see if these two docs get similar raiting for the same topic
+#doc_j = "donald trump politician abuse"
+doc_k = "machine learning bigdata youtube regression logistic sample statistics svm regression"
+doc_l = "machine learning bigdata youtube regression logistic sample statistics svm regression"
+#doc_l = "Health professionals say that brocolli is good for your healt"
 
 #compile sample documents into a list
 
-doc_set = [doc_a, doc_b, doc_c, doc_d, doc_e]
+#doc_set = [doc_a, doc_b, doc_c, doc_d, doc_e, doc_k,  doc_k, doc_k, doc_k, doc_k, doc_k, doc_k, doc_k, doc_k, doc_k]
+doc_set = [doc_a, doc_k]
 
 #doc_test = [doc_f, doc_g, doc_h, doc_i, doc_j]
-doc_test = [doc_i, doc_j, doc_k]
+#doc_test = [doc_i, doc_j, doc_k]
+doc_test = [doc_l]
 
 # list for tokenized documents in loop
 texts = []
@@ -68,12 +72,12 @@ for i in doc_set:
 texts = [[token for token in text if frequency[token] > 1] for text in texts]'''
 
 
-pprint(texts)
+#pprint(texts)
 
 # turn our tokenized documents into a id <-> term dictionary
 dictionary = corpora.Dictionary(texts)
 
-print dictionary
+#print dictionary
 
 # convert tokenized documents into a document-term matrix
 corpus = [dictionary.doc2bow(text) for text in texts]
@@ -108,10 +112,10 @@ for i in doc_test:
 
 texts = [[token for token in text if frequency[token] > 1] for text in texts]'''
 
-pprint (texts)
+#pprint (texts)
 
-dictionary = corpora.Dictionary(texts)
-
+#dictionary = corpora.Dictionary(texts)
+pprint (dictionary)
 #doc_bow = [(0, 1), (1, 1)]
 
 corpus_test = [dictionary.doc2bow(text) for text in texts]
@@ -120,7 +124,5 @@ for item in corpus_test:
     print ldamodel[item]
 print ("*********************Comparing now***********************")
 # Here I am going to run it on the same documents against which model was trained and see how well  they show the expected behavior
-for item in corpus:
-    print ldamodel[item]
-
-
+for items in corpus:
+    print ldamodel[items]
