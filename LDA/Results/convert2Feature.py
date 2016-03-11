@@ -4,7 +4,7 @@ import os
 import sys
 import json
 
-def converDFileToFeature(path):
+def converDFileToFeature(pathi, topics):
     """
     the job of this function is to, for a given input file convert them in to feature set 
     which could be consumed by any ML clustering algorithm
@@ -36,12 +36,10 @@ def converDFileToFeature(path):
                 presentList.append(var[0])
                 tempDict[var[0]] = round(var[1],2)
            
-            print tempDict
             # now building the final feature vector of what is present in list or "0" otherwise
             temp = []
             # range will vary based on how many topics, basically Max(range) == #topics
-            for index in range(0,10):
-                print index
+            for index in range(0, topics):
                 if index in presentList:
                     temp.append(tempDict[index])
                 else:
@@ -57,8 +55,10 @@ def converDFileToFeature(path):
 
 # main feature
 if __name__ == '__main__':
+    #print "USAGE script fileName #topics"
     fileName = sys.argv[1]
+    topic = sys.argv[2]
     path = os.getcwd()
     path = path + "/" + fileName 
-    converDFileToFeature(path)
+    converDFileToFeature(path, int(topic))
     
