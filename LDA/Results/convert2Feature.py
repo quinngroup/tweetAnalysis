@@ -27,6 +27,7 @@ def converDFileToFeature(path):
             presentList = []
             temp = []
             tempDict = {}
+            tempStr = ""
 
             # now iterating on feature list 1) prepare the present list where data exists 
             # 2) create a dictionary of item so we can extract exactly what we need later
@@ -42,9 +43,10 @@ def converDFileToFeature(path):
                 if index in presentList:
                     temp.append(tempDict[index])
                 else:
-                    temp.append("0")
-
-            print user + "," + str(temp)
+                    temp.append(0)
+            
+            tempStr = ','.join(map(str, temp))            
+            print user + "," + tempStr
 
 
     else:
