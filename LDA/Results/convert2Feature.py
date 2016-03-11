@@ -35,11 +35,13 @@ def converDFileToFeature(path):
             for var in feature:
                 presentList.append(var[0])
                 tempDict[var[0]] = round(var[1],2)
-            
+           
+            print tempDict
             # now building the final feature vector of what is present in list or "0" otherwise
             temp = []
             # range will vary based on how many topics, basically Max(range) == #topics
-            for index in range(0,9):
+            for index in range(0,10):
+                print index
                 if index in presentList:
                     temp.append(tempDict[index])
                 else:
