@@ -110,9 +110,9 @@ dictionary = corpora.Dictionary(texts)
 corpus = [dictionary.doc2bow(text) for text in texts]
 
 # generate LDA model
-ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics=10, id2word = dictionary, passes=20)
+ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics=20, id2word = dictionary, passes=20)
 
-print(ldamodel.print_topics(num_topics=10, num_words = 10))
+print(ldamodel.print_topics(num_topics=20, num_words = 10))
 counter = 0
 for item  in corpus:
     print nameList[counter], 
