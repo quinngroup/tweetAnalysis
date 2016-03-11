@@ -17,12 +17,36 @@ def converDFileToFeature(path):
 
         # now traversing file content one by one
         for line in fileContent:
+            # get the user and feature, 1 helps in splitting on 1st whitespace
             user, feature = line.split(" ", 1)
-            feature = eval(feature)
-            tempFeature = []
-            for var in feature:
 
-                
+            #feature is str type, converting that to list
+            feature = eval(feature)
+            
+            # initialization
+            presentList = []
+            temp = []
+            tempDict = {}
+
+            # now iterating on feature list 1) prepare the present list where data exists 
+            # 2) create a dictionary of item so we can extract exactly what we need later
+
+            for var in feature:
+                presentList.append(var[0])
+                tempDict[var[0]] = round(var[1],2)
+            
+            # now building the final feature vector of what is present in list or "0" otherwise
+            temp = []
+            # range will vary based on how many topics, basically Max(range) == #topics
+            for index in range(0,9):
+                if index in presentList:
+                    temp.append(tempDict[index])
+                else:
+                    temp.append("0")
+
+            print user + "," + str(temp)
+
+
     else:
         print "The file was not found , Fatal Error, Exiting!!!"
 
