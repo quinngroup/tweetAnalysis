@@ -1,16 +1,19 @@
 #author ranjanmanish
 
 import sys
-import pandas
+import pandas as pd
+pd.set_option('display.height', 1000)
+pd.set_option('display.max_rows', 500)
+pd.set_option('display.max_columns', 500)
+pd.set_option('display.width', 500)
 
 #take fileName as input
 
 # load data
 def dataPropPrint(fileName):
-    mydata = pandas.read_csv(fileName)
-
+    mydata = pd.read_csv(fileName)
     #check the size 
-    print len(mydata)
+    #print len(mydata)
 
     print (mydata.describe())
 
