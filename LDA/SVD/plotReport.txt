@@ -1,0 +1,51 @@
+Rewrite in own language:
+Ref: 
+http://blog.applied.ai/visualising-high-dimensional-data/
+
+Feature Reduction
+We want to make the problem more managable, by removing dimensionality where possible, whilst preserving as much information as possible
+Standardize
+As a preprocessing step, standardize the feature values so they are all mean-centered and have unit variance - this makes comparisons simpler and allows next steps for SVD.
+
+Check for degeneracy
+--------------------
+
+In an ideal dataset, all features provide new information and don't contain perfect mutual correlations aka degeneracy.
+For example, if we had two features in a dataset of human body measurements height and weight, we anticipate that whilst there will be a positive corrolation, the height feature cannot perfectly describe the weight feature. In contrast, if we had a dataset of measurements of square tabletops - length and width - we know that the length feature would perfectly describe the width feature, i.e. the features would be degenerate
+
+(SVD) is a matrix factorization commonly used in signal processing and data compression. The m x n matrix  MM  can be represented as a combination of rotation and scaling matrices  M=UΣV∗
+
+Here we will use the svd function in the scipy package to calculate the SVD and observe the singular values  ΣΣ ; if any are very close to zero then we have some degeneracy in the full dataset which we should definitely try to remove or avoid.
+
+look in SVD method of script for more information
+
+
+
+Feature Reduction (scikit-learn TruncatedSVD method)
+
+Secondly, here we'll use the TruncatedSVD method in the scikit-learn package (Truncated-SVD is a quicker calculation, and using scikit-learn is more convenient and consistent with our usage elsewhere) to transform the full dataset into a representation using the top 50 components, thus preserving variance in the data but using fewer dimensions to do so. This has a similar effect to Principal Component Analysis (PCA) where we represent the original data using an orthogonal set of axes rotated and aligned to the variance in the dataset.
+Note: there's nothing special about using the top 50 components, it's just a nice round number which preserves a lot of variance and is still too large to easily visualise, necessitaing our using t-SNE.
+
+# Gt the below data in excel to show that the data rate was sropping very quickly
+manish@manish-magicbox:~/ResearchWork/RA/2016Thesis/tweetAnalysis/LDA/SVD$ python getSNEworkingOnFeatureSet.py tSNEFV/50FeatureForSNE.csv 
+(1906, 51)
+Variance preserved by first 48 components == 99.98%
+(1906, 48)
+manish@manish-magicbox:~/ResearchWork/RA/2016Thesis/tweetAnalysis/LDA/SVD$ vi getSNEworkingOnFeatureSet.py
+manish@manish-magicbox:~/ResearchWork/RA/2016Thesis/tweetAnalysis/LDA/SVD$ python getSNEworkingOnFeatureSet.py tSNEFV/50FeatureForSNE.csv 
+(1906, 51)
+Variance preserved by first 47 components == 98.69%
+(1906, 47)
+manish@manish-magicbox:~/ResearchWork/RA/2016Thesis/tweetAnalysis/LDA/SVD$ vi getSNEworkingOnFeatureSet.py
+manish@manish-magicbox:~/ResearchWork/RA/2016Thesis/tweetAnalysis/LDA/SVD$ python getSNEworkingOnFeatureSet.py tSNEFV/50FeatureForSNE.csv 
+(1906, 51)
+Variance preserved by first 46 components == 97.22%
+(1906, 46)
+
+
+Observe scaling on basic t-SNE
+------------------------------
+As we anitcipate, we see that basic t-SNE scales badly O(n^2)
+However, this dataset is small and calculation is quick on my laptop, so I won't use the faster Barnes-Hut implementation O(n*log(n))
+
+
