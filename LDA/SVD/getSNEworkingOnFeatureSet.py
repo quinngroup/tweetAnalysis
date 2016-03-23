@@ -20,7 +20,7 @@ from scipy.linalg import svd
 from sklearn.decomposition import TruncatedSVD
 
 from sklearn.manifold import TSNE
-from IPython.html.widgets import interactive, fixed
+#from IPython.html.widgets import interactive, fixed
 
 
 #take fileName as input
@@ -77,7 +77,7 @@ def tSNE(fileName):
     '''
     # from here the Truncated SVD , this is mostly helpful in image data set where reducing dimensions is mostl;y possibel . In our case, every feature was contributing . Hence no Truncation is possible
    
-    ncomps = 39
+    ncomps = 49
 
     svd = TruncatedSVD(algorithm='randomized', n_components = ncomps)
     
@@ -126,21 +126,24 @@ def tSNE(fileName):
     dftsne = pd.DataFrame(Z, columns=['x','y'], index=dfsvd.index)
     ax = sns.lmplot('x', 'y', dftsne, fit_reg=False, size=8
                             ,scatter_kws={'alpha':0.7,'s':60})
-
+    ax.axes.flat[0].set_title('Scatterplot of a 50D dataset reduced to 2D- Unsupervised')
     
     #plt.show()
 
     
     dftsne['class'] = df['class']
-    g = sns.lmplot('x', 'y', dftsne, hue='class', fit_reg=False, size=8
-                            ,scatter_kws={'alpha':0.7,'s':60})
-    g.axes.flat[0].set_title('Scatterplot of a 50D dataset reduced to 2D using t-SNE')
+    
+    
+    g = sns.lmplot('x', 'y', dftsne, hue='class', fit_reg=False, size=8, scatter_kws={'alpha':0.7,'s':60})
 
+    g.axes.flat[0].set_title('Scatterplot of a 50D dataset reduced to 2D -Supervised')
+    
+
+   	
     plt.show()
 
 def plot_3d_scatter(A, elevation=30, azimuth=120):
     """ Create 3D scatterplot """
-    
     maxpts=1000
     fig = plt.figure(1, figsize=(9, 9))
     ax = Axes3D(fig, rect=[0, 0, .95, 1], elev=elevation, azim=azimuth)
