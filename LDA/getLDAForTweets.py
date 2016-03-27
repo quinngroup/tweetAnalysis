@@ -6,6 +6,7 @@ from gensim import corpora, models
 from collections import defaultdict
 from pprint import pprint
 from datetime import datetime
+from textblob import TextBlob
 
 import gensim
 import os
@@ -20,7 +21,18 @@ for word in dictFile:
     word = word.strip()
     dictionary.append(word.lower())
 
-print len(dictionary)
+negList = open("negative-words.txt")
+
+for negWord in negList:
+    negWord = negWord.strip()
+    dictionary.append(negWord.lower())
+
+foulList = open("foulWordList.txt")
+
+for foulWord in foulList:
+    foulWord = foulWord.split(":")[0]
+    foulWord = foulWord.strip()
+    dictionary.append(foulWord.lower())
 
 # create English stop words list
 en_stop = get_stop_words('en')
@@ -38,8 +50,10 @@ doc_set=[]
 # get the current path
 path = os.getcwd()
 # bring the path to speed
+#path = path + "/ALLIN"
+path = path + "/NewDATAForExp/CSVs_NF_renamed"
+#path = path + "/FILTERED_ALL"
 #path = path + "/TEMP"
-path = path + "/FILTERED"
 
 #get the list of files
 lst = os.listdir(path)
@@ -56,13 +70,18 @@ for fileName in lst:
     for line in fileContent:
         try:
             line = line.split(",")[2]
+            # get rid of urls
             line = re.sub('((www\.[^\s]+)|(https?://[^\s]+))','',line)
+            #to replace #words to just words 
             #line = re.sub(r'#([^\s]+)', r'\1', line)
             line = re.sub(r'#([^\s]+)', '', line)
+            # userNames - no use- get rid
             line = re.sub('@[^\s]+','', line)
+            # new lines were creating issues
             line = line.strip('\'"')
-            # and this was throwing exception because of unicode error
+            # throwing exception because of unicode error - Fixed that
             line = unicode(line, "utf8")
+            # prepare string
             temp = temp + str(line)
             #print temp
         except:
@@ -80,27 +99,46 @@ for i in doc_set:
     raw = i.lower()
     tokens = tokenizer.tokenize(raw)
     # remove stop words from tokens
+    
     stopped_tokens = [i for i in tokens if not i in en_stop]
-    dict_tokens = [i for i in stopped_tokens if  i in dictionary]
+
+    
+    #dict_tokens = [i for i in stopped_tokens if  i in dictionary]
     
     # stopwords from nltk package as well although there is not much difference 
+    # dictionary approach is killing us time uwise
     #stopped_tokens = [i for i in tokens if not i in cachedStopWords]
     
     # stem tokens
-    stemmed_tokens = [p_stemmer.stem(i) for i in dict_tokens]
+    # stemmed_tokens = [p_stemmer.stem(i) for i in stopped_tokens]
+    #stemmed_tokens = [p_stemmer.stem(i) for i in dict_tokens]
 
-    for element in stemmed_tokens:
+    for element in stopped_tokens:
         if len(element) > 2:
             filtered_tokens.append(element)
-   
-    texts.append(filtered_tokens)
+    
+
+    # how about trying stemming once all the two length words are out 
+    stemmed_tokens = [p_stemmer.stem(i) for i in filtered_tokens]
+
+    # now going to give a attempt try to correct the words - removing the stemmer for now problem: # spell correction gave us 2 min / document not a feasible option hence
+    spellcorrected_tokens = []
+    '''for element in stemmed_tokens:
+        b = TextBlob(element)
+        word = b.correct()
+        spellcorrected_tokens.append(str(word))
+    '''
+    texts.append(stemmed_tokens)
+    #texts.append(filtered_tokens)
+    #texts.append(spellcorrected_tokens)
 
 #if word has appeared just once in corpus - throw that out 
 for text in texts:
     for token in text:
         frequency[token] += 1
 
-texts = [[token for token in text if frequency[token] > 1] for text in texts]
+
+texts = [[token for token in text if frequency[token] > 3] for text in texts]
 
 
 # turn our tokenized documents into a id <-> term dictionary
@@ -110,10 +148,14 @@ dictionary = corpora.Dictionary(texts)
 corpus = [dictionary.doc2bow(text) for text in texts]
 
 # generate LDA model
-ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics=10, id2word = dictionary, passes=20)
+ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics=30, id2word = dictionary, passes=20)
 
-print(ldamodel.print_topics(num_topics=10, num_words = 10))
+print(ldamodel.print_topics(num_topics=30, num_words = 15))
+
+ldamodel.save('./data/lda_twitter_6310user_30topics.model')
+
 counter = 0
+
 for item  in corpus:
     print nameList[counter], 
     counter = counter + 1
