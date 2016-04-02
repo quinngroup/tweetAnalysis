@@ -1,5 +1,5 @@
 #author http://blog.applied.ai/visualising-high-dimensional-data/
-# modified for my analysisranjanmanish
+# modified for my analysis ranjanmanish
 
 import sys
 import pandas
@@ -20,14 +20,14 @@ from scipy.linalg import svd
 from sklearn.decomposition import TruncatedSVD
 
 from sklearn.manifold import TSNE
-#from IPython.html.widgets import interactive, fixed
+from IPython.html.widgets import interactive, fixed
 
 
 #take fileName as input
 
 # load data
 def dataPropPrint(fileName):
-    cnx = sqlite3.connect('data/50Feature.db')
+    cnx = sqlite3.connect('data/10Feature.db')
     dforigtrain = pandas.read_csv(fileName)
     #print (mydata.shape)
     #print mydata.head()
@@ -47,7 +47,7 @@ def dataPropPrint(fileName):
     plt.show()
 
 def tSNE(fileName):
-    cnx = sqlite3.connect('data/40Feature.db')
+    cnx = sqlite3.connect('data/10Feature.db')
     dforigtrain = pandas.read_csv(fileName)
     print (dforigtrain.shape)
     print dforigtrain.head()
@@ -73,11 +73,11 @@ def tSNE(fileName):
     print('{} SVs are NaN'.format(np.isnan(s).sum()))
     print('{} SVs less than 1e-12'.format(len(s[s < 1e-12])))
     
-    plt.show()
-    '''
+    plt.show()'''
+    
     # from here the Truncated SVD , this is mostly helpful in image data set where reducing dimensions is mostl;y possibel . In our case, every feature was contributing . Hence no Truncation is possible
    
-    ncomps = 49
+    ncomps = 9
 
     svd = TruncatedSVD(algorithm='randomized', n_components = ncomps)
     
@@ -90,7 +90,7 @@ def tSNE(fileName):
     print('Variance preserved by first '+ str(ncomps)+' components == {:.2%}'.format(
                 svd_fit.explained_variance_ratio_.cumsum()[-1]))
 
-    #plt.show()
+    plt.show()
 
     dfsvd = pd.DataFrame(Y, columns=['c{}'.format(c) for c in range(ncomps)], index=df.index)
     
@@ -106,9 +106,19 @@ def tSNE(fileName):
     df = pd.read_sql('select * from df_clean', cnx)
     
     print(dfsvd.shape)
-#
+
     print (dfsvd.head())
     
+    plotdims = 8
+    ploteorows = 1
+    dfsvdplot = dfsvd[svdcols].iloc[:,:plotdims]
+    dfsvdplot['class'] = df['class']
+    #interactive(plot_3d_scatter, A=fixed(dfsvd), elevation=30, azimuth=120)
+
+    ax = sns.pairplot(dfsvdplot.iloc[::ploteorows,:], hue='class', size=1.8)
+
+    plt.show()
+
     #rowsubset = [10,20,40,80,160,320,640, 1280, 1900]
     tsne = TSNE(n_components=2, random_state=0)
     '''runs = np.empty((len(rowsubset),1))
@@ -119,9 +129,9 @@ def tSNE(fileName):
         runs[i] = time() - t0
 
     ax = pd.DataFrame(runs, index=rowsubset).plot(kind='bar', logy=False, figsize=(10,4))
-    plt.show()'''
+    plt.show()
     
-    
+    '''    
     Z = tsne.fit_transform(dfsvd[svdcols])
     dftsne = pd.DataFrame(Z, columns=['x','y'], index=dfsvd.index)
     ax = sns.lmplot('x', 'y', dftsne, fit_reg=False, size=8
