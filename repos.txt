@@ -257,4 +257,8 @@ Text Mining
 
 A number of datasets can be found at: http://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html#datasets
 
+https://www.quora.com/How-and-where-can-I-obtain-training-data-for-machine-learning/answer/Michael-Li-10?__snids__=1624993662&__nsrc__=2
+
+
+
 
