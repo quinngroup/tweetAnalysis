@@ -66,7 +66,7 @@ def get_all_tweets(screen_name):
 
 	pass
 
-
+# give it a file name as arg , file which has userids one row per user
 if __name__ == '__main__':
 	fileName = sys.argv[1]
 	for line in open(fileName):
